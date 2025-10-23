@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dharshini Mahalingam | AI/ML Specialist</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #6c63ff;
+      --secondary: #4d44db;
+      --dark: #2f2e41;
+      --light: #f8f9fa;
+      --accent: #ff6584;
+      --bg: #ffffff;
+      --text: #333333;
+      --card-bg: #ffffff;
+    }
+
+    /* Dark Mode */
+    .dark-mode {
+      --primary: #8a85ff;
+      --secondary: #6c63ff;
+      --dark: #121212;
+      --light: #1e1e1e;
+      --accent: #ff6584;
+      --bg: #121212;
+      --text: #f8f9fa;
+      --card-bg: #1e1e1e;
+    }
+
+    /* Rainbow Mode */
+    .rainbow-mode {
+      --primary: #ff6b6b;
+      --secondary: #4ecdc4;
+      --dark: #292f36;
+      --light: #f7fff7;
+      --accent: #ffe66d;
+      --bg: linear-gradient(135deg, #f7fff7 0%, #f0f4ff 100%);
+      --text: #292f36;
+      --card-bg: #ffffff;
+    }
+
+    /* Cyberpunk Mode */
+    .cyberpunk-mode {
+      --primary: #00f0ff;
+      --secondary: #ff00aa;
+      --dark: #0d0221;
+      --light: #261447;
+      --accent: #ff3864;
+      --bg: #0d0221;
+      --text: #ffffff;
+      --card-bg: #261447;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header Styles */
+    header {
+      padding: 40px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .profile-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--primary);
+      box-shadow: 0 10px 30px rgba(108, 99, 255, 0.3);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: var(--secondary);
+      margin-bottom: 20px;
+    }
+
+    /* Vibe Switcher */
+    .vibe-switcher {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+      display: flex;
+      gap: 10px;
+    }
+
+    .vibe-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--card-bg);
+      color: var(--text);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .vibe-btn:hover {
+      transform: scale(1.1);
+    }
+
+    /* Section Styles */
+    section {
+      padding: 40px 0;
+      border-bottom: 1px solid rgba(108, 99, 255, 0.1);
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+      color: var(--primary);
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    /* About Section */
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    /* Skills Section */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .skill-category {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .skill-category h3 {
+      margin-bottom: 15px;
+      color: var(--secondary);
+    }
+
+    .skill-item {
+      background: var(--card-bg);
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      border-left: 4px solid var(--primary);
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .project-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .project-info {
+      padding: 20px;
+    }
+
+    .project-info h3 {
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .tag {
+      background: rgba(108, 99, 255, 0.1);
+      color: var(--primary);
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    /* Certifications Section */
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .cert-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      border-top: 4px solid var(--primary);
+    }
+
+    .cert-card h3 {
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .cert-card p {
+      margin-bottom: 15px;
+      color: var(--text);
+      opacity: 0.8;
+    }
+
+    .cert-link {
+      display: inline-block;
+      padding: 8px 15px;
+      background: var(--primary);
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .cert-link:hover {
+      background: var(--secondary);
+    }
+
+    /* Contact Section */
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .contact-method {
+      flex: 1;
+      min-width: 250px;
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .contact-method i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      color: var(--text);
+      opacity: 0.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .about-content {
+        flex-direction: column;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="vibe-switcher">
+    <button class="vibe-btn" onclick="setVibe('default')">🌞</button>
+    <button class="vibe-btn" onclick="setVibe('dark')">🌙</button>
+    <button class="vibe-btn" onclick="setVibe('rainbow')">🌈</button>
+    <button class="vibe-btn" onclick="setVibe('cyberpunk')">🤖</button>
+  </div>
+
+  <div class="container">
+    <header>
+      <img src="profile.jpg" alt="Dharshini Mahalingam" class="profile-img">
+      <h1>Dharshini Mahalingam</h1>
+      <p class="tagline">AI & ML Specialist | Full Stack Developer</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fas fa-envelope"></i></a>
+      </div>
+    </header>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>I'm Dharshini M, currently pursuing BE in Computer Science Engineering with specialization in Artificial Intelligence and Machine Learning at KIT - Kalaignarkarunanidhi Institute of Technology (2023-2027).</p>
+          <p>Passionate about technology, problem-solving, and developing innovative solutions using AI and modern computing techniques. I aim to enhance my skills in software development, data analysis, and intelligent systems while contributing to impactful projects.</p>
+          <p>Current CGPA: 7.92/10 (upto 3rd semester)</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="education-item">
+        <h3>KIT - Kalaignar Karunanidhi Institute of Technology, Coimbatore</h3>
+        <p>BE - Computer Science Engineering (AI & ML)</p>
+        <p>2023 - 2027</p>
+        <p>CGPA: 7.92/10</p>
+      </div>
+      <div class="education-item">
+        <h3>Swami Vivekananda Vidhyalaya Hr. Sec. School, Trichy</h3>
+        <p>HSC</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3>Programming Languages</h3>
+          <div class="skill-item">Python (Intermediate)</div>
+          <div class="skill-item">C (Intermediate)</div>
+          <div class="skill-item">Java (Beginner)</div>
+        </div>
+        <div class="skill-category">
+          <h3>Web Technologies</h3>
+          <div class="skill-item">HTML</div>
+          <div class="skill-item">CSS</div>
+          <div class="skill-item">JavaScript (Basic)</div>
+          <div class="skill-item">SQL</div>
+        </div>
+        <div class="skill-category">
+          <h3>Technical</h3>
+          <div class="skill-item">Machine Learning</div>
+          <div class="skill-item">DBMS</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <!-- <img src="project1.jpg" alt="Crop Mind AI" class="project-img"> -->
+          <div class="project-info">
+            <h3>Crop Mind AI</h3>
+            <p>AI-based plant disease detection system using computer vision and machine learning.</p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">TensorFlow</span>
+              <span class="tag">Computer Vision</span>
+            </div>
+            <!--<a href="#" class="cert-link">View Project</a>-->
+          </div>
+        </div>
+        <div class="project-card">
+          <!-- <img src="project2.jpg" alt="Sign Language Translator" class="project-img"> -->
+          <div class="project-info">
+            <h3>Sign Language Translator</h3>
+            <p>Converts sign language to text and speech using machine learning algorithms.</p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">OpenCV</span>
+              <span class="tag">ML</span>
+            </div>
+            <!-- <a href="#" class="cert-link">View Project</a> -->
+          </div>
+        </div>
+        <div class="project-card">
+          <!-- <img src="project3.jpg" alt="Weather App" class="project-img"> -->
+          <div class="project-info">
+            <h3>Weather App</h3>
+            <p>Live API-based weather information application with stylish UI.</p>
+            <div class="project-tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">API</span>
+              <span class="tag">CSS</span>
+            </div>
+            <!-- <a href="#" class="cert-link">View Project</a> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="internships">
+      <h2>Internships</h2>
+      <div class="certifications-grid">
+        <div class="cert-card">
+          <h3>Web Development Intern</h3>
+          <p>Codebind Technologies, Trichy</p>
+          <p>Developed and designed responsive web pages using HTML, CSS, and JavaScript, ensuring modern UI/UX principles.</p>
+          <!-- <a href="#" class="cert-link">View Certificate</a> -->
+        </div>
+        <div class="cert-card">
+          <h3>Full Stack Development Intern</h3>
+          <p>Nandha Info Tech, Coimbatore</p>
+          <p>15-day intensive internship covering HTML, CSS, JavaScript, PHP, and MySQL for dynamic web applications.</p>
+          <!-- <a href="#" class="cert-link">View Certificate</a> -->
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <h2>Certifications</h2>
+      <div class="certifications-grid">
+        <div class="cert-card">
+          <h3>Machine Learning Fundamentals</h3>
+          <p>Coursera | 2024</p>
+          <p>Completed comprehensive course on ML algorithms and applications.</p>
+          <!-- <a href="#" class="cert-link">View Certificate</a> -->
+        </div>
+        <div class="cert-card">
+          <h3>Web Development Bootcamp</h3>
+          <p>Udemy | 2023</p>
+          <p>Full stack web development with HTML, CSS, JavaScript and frameworks.</p>
+          <!-- <a href="#" class="cert-link">View Certificate</a> -->
+        </div>
+        <div class="cert-card">
+          <h3>Python for Data Science</h3>
+          <p>DataCamp | 2023</p>
+          <p>Data analysis and visualization with Python libraries.</p>
+          <!-- <a href="#" class="cert-link">View Certificate</a> -->
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-info">
+        <div class="contact-method">
+          <i class="fas fa-envelope"></i>
+          <h3>Email</h3>
+          <p>kit27.am15@gmail.com</p>
+        </div>
+        <div class="contact-method">
+          <i class="fas fa-phone"></i>
+          <h3>Phone</h3>
+          <p>+91 9952343262</p>
+        </div>
+        <div class="contact-method">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>Location</h3>
+          <p>Coimbatore, Tamil Nadu</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Dharshini Mahalingam. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function setVibe(vibe) {
+      document.body.className = vibe + '-mode';
+    }
+  </script>
+</body>
+</html>
